@@ -1,12 +1,12 @@
 export default async function handler(req, res) {
   const errorCode = req.query.code.toUpperCase();
+  console.log(errorCode);
 
   if (errorCode.length < 8) {
-    res.status(400).json({ message: 'Bad request' });
+    res.status(400).json({ message: 'Bad request, error code length is 8' });
   }
   const binaryCode = convertBinary(errorCode);
   const response = pareErrorMessage(binaryCode);
-
   res.status(200).json(response);
 }
 
